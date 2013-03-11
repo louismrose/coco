@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 
+# Alternative to WEBrick
+gem 'puma'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
