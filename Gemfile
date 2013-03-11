@@ -9,7 +9,8 @@ gem 'puma'
 gem 'codemirror-rails'
 gem 'twitter-bootstrap-rails'
 
-gem 'activerecord-jdbcsqlite3-adapter'
+gem 'activerecord-jdbcsqlite3-adapter', group: [:development, :test]
+gem 'activerecord-jdbcpostgresql-adapter', group: [:production]
 # gem 'jruby-openssl' causes a lot already initialized constant errors ?
 
 # Gems used only for assets and not required
