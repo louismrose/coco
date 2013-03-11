@@ -10,7 +10,7 @@ gem 'codemirror-rails'
 gem 'twitter-bootstrap-rails'
 
 gem 'activerecord-jdbcsqlite3-adapter'
-gem 'jruby-openssl'
+# gem 'jruby-openssl' causes a lot already initialized constant errors ?
 
 # Gems used only for assets and not required
 # in production environments by default.
