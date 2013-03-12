@@ -1,2 +1,9 @@
-<h1>SutsController#index</h1>
-<p>Find me in app/views/suts_controller/index.html.erb</p>
+<h3>SUTs</h3>
+
+<ul>
+<% @suts.each do |sut| %>
+  <li><%=link_to "SUT #{sut.id}", sut %></td>
+<% end %>
+</ul>
+
+<%= link_to 'New SUT', new_sut_path, class: 'btn btn-primary' %>

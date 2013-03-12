@@ -2,6 +2,7 @@ class SutsController < ApplicationController
   respond_to :html
   
   def index
+    @suts = Sut.all
   end
 
   def show
