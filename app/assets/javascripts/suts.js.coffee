@@ -6,8 +6,10 @@ $ ->
   load(editor) for editor in $(".editor")
   
 load = (editor) ->
-  myCodeMirror = CodeMirror(editor,
-    value: "function myScript(){return 100;}\n"
+  myCodeMirror = CodeMirror((elt) ->
+    editor.parentNode.replaceChild elt, editor
+  ,
+    value: editor.value
     mode: "javascript"
     theme: "lesser-dark"
     lineNumbers: true

@@ -1,6 +1,11 @@
-<h1>SutsController#show</h1>
+<h1>SUT #<%=@sut.id%></h1>
 
-<p>Find me in app/views/suts_controller/show.html.erb</p>
+<h3>Metamodel</h3>
+<textarea class="editor">
+  <%=@sut.metamodel%>
+</textarea>
 
-<div class="editor">
-</div>
+<h3>Transformation</h3>
+<textarea class="editor">
+  <%=@sut.transformation%>
+</textarea>
