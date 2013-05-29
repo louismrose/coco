@@ -11,6 +11,7 @@ class InstancesController < ApplicationController
     @instance = Instance.new(instance_params)
 
     if @instance.save
+      Resque.enqueue(InstanceRunner, @instance.id)
       redirect_to [@transformation,@instance], notice: 'Instance was successfully created.'
     else
       render action: 'new'
