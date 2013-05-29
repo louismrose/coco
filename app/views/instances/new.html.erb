@@ -3,7 +3,7 @@
 <%= form_for [@transformation, @instance]  do |f| -%>
   <fieldset>
     <%= f.label :input_model, class: "control-label" %>
-    <%= f.text_area :input_model, class: "editor" %>
+    <%= f.text_area :input_model, class: "editor", "data-mime-type" => "text/x-hutn" %>
     <%= f.submit class: "btn-primary" %>
   </fieldset>
 <% end -%>

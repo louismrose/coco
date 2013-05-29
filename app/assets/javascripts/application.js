@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require codemirror
-//= require codemirror/modes/javascript
+//= require codemirror/modes/clike
 //= require_tree .
