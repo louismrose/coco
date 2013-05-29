@@ -17,4 +17,5 @@
 # Ignore machine-specific environment variables used by foreman
 .env
 
+**/.DS_Store
 dump.rdb
