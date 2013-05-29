@@ -1,6 +1,10 @@
 Coco::Application.routes.draw do
   resources :suts
   
+  resources :transformations, only: [:show] do
+    resources :instances, only: [:new, :create, :show]
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

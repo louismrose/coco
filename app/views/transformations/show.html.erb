@@ -1,0 +1,12 @@
+<h1>Transformation #<%=@transformation.id%></h1>
+
+<h3>Source Metamodel</h3>
+<textarea class="editor" data-read-only="true"><%=@transformation.source_metamodel%></textarea>
+
+<h3>Target Metamodel</h3>
+<textarea class="editor" data-read-only="true"><%=@transformation.target_metamodel%></textarea>
+
+<h3>Transformation</h3>
+<textarea class="editor" data-read-only="true"><%=@transformation.code%></textarea>
+
+<%= link_to 'New Instance', new_transformation_instance_path(@transformation.id), class: 'btn btn-primary' %>

@@ -1,0 +1,9 @@
+<h1>Create a new instance</h1>
+
+<%= form_for [@transformation, @instance]  do |f| -%>
+  <fieldset>
+    <%= f.label :input_model, class: "control-label" %>
+    <%= f.text_area :input_model, class: "editor" %>
+    <%= f.submit class: "btn-primary" %>
+  </fieldset>
+<% end -%>
