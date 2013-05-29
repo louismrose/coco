@@ -17,3 +17,4 @@
 # Ignore machine-specific environment variables used by foreman
 .env
 
+dump.rdb
