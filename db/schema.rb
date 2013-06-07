@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130529130823) do
+ActiveRecord::Schema.define(version: 20130606130250) do
 
   create_table "instances", force: true do |t|
     t.text     "input_model"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "output_model"
   end
 
   create_table "suts", force: true do |t|
