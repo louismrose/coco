@@ -1,6 +1,4 @@
-require "transformers/org.eclipse.emf.common_2.8.0.v20130125-0546.jar"
-require "transformers/org.eclipse.emf.ecore_2.8.3.v20130125-0546.jar"
-require "transformers/org.eclipse.emf.ecore.xmi_2.8.1.v20130125-0546.jar"
+require "java/emf.jar"
 
 class RegistersMetamodel
   
@@ -8,9 +6,10 @@ class RegistersMetamodel
     @xmi = xmi
   end
   
-  def run 
-    package = resource.getContents().get(0)
+  def run
+    package = resource.contents.get(0)
     register_package(package)
+    package
   end
   
 private
@@ -21,6 +20,6 @@ private
   end
   
   def register_package(package)
-    Java::OrgEclipseEmfEcore::EPackage::Registry.INSTANCE.put(package.getNsURI(), package)
+    Java::OrgEclipseEmfEcore::EPackage::Registry.INSTANCE.put(package.nsURI, package)
   end
 end

@@ -33,6 +33,10 @@ gem 'activerecord-jdbcsqlite3-adapter', '~> 1.3.0.beta1', group: [:development, 
 gem 'activerecord-jdbcpostgresql-adapter', '~> 1.3.0.beta1', group: [:production]
 
 
+group :test do
+  gem 'rspec', '~> 2.13.0'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
