@@ -1,8 +1,8 @@
-require "app/workers/epsilon/registers_metamodel.rb"
+require "app/workers/epsilon/registers_metamodel_from_xmi.rb"
 
-describe RegistersMetamodel, "#run" do
+describe RegistersMetamodelFromXmi, "#run" do
   it "registers valid XMI" do
-    RegistersMetamodel.new(families_xmi).run
+    RegistersMetamodelFromXmi.new(families_xmi).run
     p = Java::OrgEclipseEmfEcore::EPackage::Registry.INSTANCE.get("http://families")
     p.name.should eq("families")
   end

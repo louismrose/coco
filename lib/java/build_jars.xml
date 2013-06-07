@@ -14,6 +14,7 @@
 			<fileset dir="../org.eclipse.epsilon.hutn.model/bin"/>
 			<fileset dir="../org.eclipse.epsilon.hutn.model.antlrAst/bin"/>
 			<fileset dir="../org.eclipse.epsilon.hutn.model.config/bin"/>
+			<fileset dir="../org.eclipse.epsilon.hutn.unparser/bin"/>
 			<fileset dir="../org.eclipse.epsilon.emc.emf/bin"/>
 			<fileset dir="../org.eclipse.epsilon.antlr.postprocessor/bin"/>
 			<fileset dir="../org.eclipse.epsilon.antlr.postprocessor.model/bin"/>
@@ -22,15 +23,33 @@
 		</jar>
 		
 		<echo>Unpacking EMF jars</echo>
+		<delete dir="tmp"/>
+		<echo file="tmp/plugin.properties">_UI_DiagnosticRoot_diagnostic=_UI_DiagnosticRoot_diagnostic</echo>
 		<unzip src="org.eclipse.emf.common_2.8.0.v20130125-0546.jar" dest="tmp/org.eclipse.emf.common/" />
 		<unzip src="org.eclipse.emf.ecore_2.8.3.v20130125-0546.jar" dest="tmp/org.eclipse.emf.ecore/" />
 		<unzip src="org.eclipse.emf.ecore.xmi_2.8.1.v20130125-0546.jar" dest="tmp/org.eclipse.emf.ecore.xmi/" />
 		
 		<echo>Building EMF jar</echo>
-		<jar destfile="emf.jar.zip">
+		<jar destfile="emf.jar">
+			<fileset dir="tmp" includes="plugin.properties"/>
 			<fileset dir="tmp/org.eclipse.emf.common" includes="org/**/*"/>
 			<fileset dir="tmp/org.eclipse.emf.ecore"  includes="org/**/*"/>
 			<fileset dir="tmp/org.eclipse.emf.ecore.xmi"  includes="org/**/*"/>
+		</jar>
+		
+		<echo>Unpacking Emfatic jars</echo>
+		<delete dir="tmp"/>
+		<unzip src="org.eclipse.emf.emfatic.core_0.8.0.201302100848.jar" dest="tmp/org.eclipse.emfatic.core" />
+		<unzip src="org.eclipse.core.runtime_3.8.0.v20120912-155025.jar" dest="tmp/org.eclipse.core.runtime/" />
+		<unzip src="org.eclipse.equinox.common_3.6.100.v20120522-1841.jar" dest="tmp/org.eclipse.equinox.common/" />
+		<unzip src="org.eclipse.gymnast.runtime.core_0.8.0.201302100848.jar" dest="tmp/org.eclipse.gymnast.runtime.core/" />
+		
+		<echo>Building Emfatic jar</echo>
+		<jar destfile="emfatic.jar">
+			<fileset dir="tmp/org.eclipse.emfatic.core" includes="org/**/*"/>
+			<fileset dir="tmp/org.eclipse.core.runtime"  includes="org/**/*"/>
+			<fileset dir="tmp/org.eclipse.equinox.common"  includes="org/**/*"/>
+			<fileset dir="tmp/org.eclipse.gymnast.runtime.core"  includes="org/**/*"/>
 		</jar>
 	</target>
 </project>

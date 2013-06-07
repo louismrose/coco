@@ -1,7 +1,6 @@
 require "java/emf.jar"
 
-class RegistersMetamodel
-  
+class RegistersMetamodelFromXmi
   def initialize(xmi)
     @xmi = xmi
   end

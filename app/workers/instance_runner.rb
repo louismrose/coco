@@ -1,4 +1,4 @@
-require_relative "epsilon/registers_metamodel"
+require_relative "epsilon/registers_metamodel_from_emfatic"
 require_relative "epsilon/loads_model_from_hutn"
 require_relative "epsilon/creates_empty_model"
 require_relative "epsilon/runs_transformation"
@@ -23,8 +23,14 @@ class InstanceRunner
     serialise output_model
   end
   
+  def debug(m)
+    m.eResource.allContents.each do |c|
+      puts c.containment if c.name == "children"
+    end
+  end
+  
   def register_metamodel(metamodel)  
-    RegistersMetamodel.new(metamodel).run
+    RegistersMetamodelFromEmfatic.new(metamodel).run
   end
   
   def input_model
