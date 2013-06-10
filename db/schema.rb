@@ -11,20 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130606130250) do
+ActiveRecord::Schema.define(version: 20130610135842) do
 
   create_table "instances", force: true do |t|
     t.text     "input_model"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "output_model"
+    t.integer  "transformation_id"
   end
 
   create_table "suts", force: true do |t|
     t.text     "metamodel"
     t.text     "transformation"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "transformations", force: true do |t|

@@ -1,4 +1,6 @@
 class Transformation < ActiveRecord::Base
+  has_many :instances
+  
   def source_metamodel
 <<-EOS
 @namespace(uri="Tree", prefix="Tree")

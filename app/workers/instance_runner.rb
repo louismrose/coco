@@ -14,19 +14,13 @@ class InstanceRunner
   
   def initialize(instance)
     @instance = instance
-    @source_metamodel = register_metamodel(@instance.source_metamodel)
-    @target_metamodel = register_metamodel(@instance.target_metamodel)
+    @source_metamodel = register_metamodel(@instance.transformation.source_metamodel)
+    @target_metamodel = register_metamodel(@instance.transformation.target_metamodel)
   end
   
   def transform
     run_transformation
     serialise output_model
-  end
-  
-  def debug(m)
-    m.eResource.allContents.each do |c|
-      puts c.containment if c.name == "children"
-    end
   end
   
   def register_metamodel(metamodel)  
@@ -42,7 +36,7 @@ class InstanceRunner
   end
   
   def run_transformation
-    RunsTransformation.new(@instance.transformation, input_model, output_model).run
+    RunsTransformation.new(@instance.transformation.code, input_model, output_model).run
   end
   
   def serialise(model_to_serialise)

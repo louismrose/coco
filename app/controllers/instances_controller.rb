@@ -4,11 +4,11 @@ class InstancesController < ApplicationController
   before_action :set_transformation
 
   def new
-    @instance = Instance.new
+    @instance = @transformation.instances.build
   end
 
   def create
-    @instance = Instance.new(instance_params)
+    @instance = @transformation.instances.create(instance_params)
 
     if @instance.save
       Resque.enqueue(InstanceRunner, @instance.id)
