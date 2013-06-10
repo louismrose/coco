@@ -38,15 +38,7 @@ class CreateCodeMirror
   constructor: (@original) ->
   
   run: ->
-    codeMirroredEditor = CodeMirror(@replacer, @config())
-    # Preserve the name of the original editor to 
-    # ensure compatibility with form fields
-    codeMirroredEditor.display.input.id = @original.id
-    codeMirroredEditor.display.input.name = @original.name
-    codeMirroredEditor
-  
-  replacer: (codeMirrored) =>
-    @original.parentNode.replaceChild codeMirrored, @original
+    CodeMirror.fromTextArea(@original, @config())
   
   config: =>
     value: @original.value
