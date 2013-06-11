@@ -3,5 +3,6 @@ class TransformationsController < ApplicationController
 
   def show
     @transformation = Transformation.find(params[:id])
+    respond_with(@transformation)
   end
 end

@@ -1,25 +1,22 @@
 class InstancesController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
   
   before_action :set_transformation
 
   def new
     @instance = @transformation.instances.build
+    respond_with(@transformation, @instance)
   end
 
   def create
     @instance = @transformation.instances.create(instance_params)
-
-    if @instance.save
-      Resque.enqueue(InstanceRunner, @instance.id)
-      redirect_to [@transformation,@instance], notice: 'Instance was successfully created.'
-    else
-      render action: 'new'
-    end
+    Resque.enqueue(InstanceRunner, @instance.id) if @instance.save
+    respond_with(@transformation, @instance)
   end
 
   def show
     @instance = Instance.find(params[:id])
+    respond_with(@transformation, @instance)
   end
   
 private
