@@ -1,0 +1,12 @@
+<h1>Transformations</h1>
+
+<% if @transformations %>
+  <ul>
+  <% @transformations.each do |transformation| %>
+    <li><%= link_to "Transformation #{transformation.id}", transformation %></li>
+  <% end %>
+  </ul>
+
+<% else %>
+  No transformation have been created yet.
+<% end %>
