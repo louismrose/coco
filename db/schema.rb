@@ -24,13 +24,6 @@ ActiveRecord::Schema.define(version: 20130610135842) do
     t.integer  "transformation_id"
   end
 
-  create_table "suts", force: true do |t|
-    t.text     "metamodel"
-    t.text     "transformation"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "transformations", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"

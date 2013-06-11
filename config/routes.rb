@@ -1,6 +1,4 @@
 CocoTransform::Application.routes.draw do
-  resources :suts
-  
   resources :transformations, only: [:show] do
     resources :instances, only: [:new, :create, :show]
   end
