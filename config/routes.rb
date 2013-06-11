@@ -1,4 +1,4 @@
-Coco::Application.routes.draw do
+CocoTransform::Application.routes.draw do
   resources :suts
   
   resources :transformations, only: [:show] do

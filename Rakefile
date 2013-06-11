@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Coco::Application.load_tasks
+CocoTransform::Application.load_tasks

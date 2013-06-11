@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Coco::Application.config.secret_key_base = 'b438ba01522fdcf42a5c263f4d4bd9ff9ae5bf709c72ba769a46caf7ea8136ecb61289a5bbeb37850d53896d3dbab34a4ae98cab303cc8bc278a6ce58f31e537'
+CocoTransform::Application.config.secret_key_base = 'b438ba01522fdcf42a5c263f4d4bd9ff9ae5bf709c72ba769a46caf7ea8136ecb61289a5bbeb37850d53896d3dbab34a4ae98cab303cc8bc278a6ce58f31e537'
