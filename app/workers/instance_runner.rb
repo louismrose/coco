@@ -3,13 +3,15 @@ require_relative "epsilon/loads_model_from_hutn"
 require_relative "epsilon/creates_empty_model"
 require_relative "epsilon/runs_transformation"
 require_relative "epsilon/serialises_model_to_hutn"
+require_relative "epsilon/calculates_coverage"
 
 class InstanceRunner
   @queue = :instances
   
   def self.perform(instance_id)
     instance = Instance.find(instance_id)
-    instance.update_attribute(:output_model, InstanceRunner.new(instance).transform)
+    InstanceRunner.new(instance).transform
+    instance.save
   end
   
   def initialize(instance)
@@ -20,7 +22,8 @@ class InstanceRunner
   
   def transform
     run_transformation
-    serialise output_model
+    @instance.output_model = serialise(output_model)
+    @instance.coverage = calculate_coverage
   end
   
   def register_metamodel(metamodel)  
@@ -36,10 +39,14 @@ class InstanceRunner
   end
   
   def run_transformation
-    RunsTransformation.new(@instance.transformation.code, input_model, output_model).run
+    @etl_module = RunsTransformation.new(@instance.transformation.code, input_model, output_model).run
   end
   
   def serialise(model_to_serialise)
     SerialisesModelToHutn.new(model_to_serialise).run
+  end
+  
+  def calculate_coverage
+    CalculatesCoverage.new(@etl_module).run
   end
 end

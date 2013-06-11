@@ -10,5 +10,6 @@ class RunsTransformation
     transformer.parse(@transformation)
     @models.each { |m| transformer.context.modelRepository.addModel(m) }
     transformer.execute
+    transformer
   end
 end

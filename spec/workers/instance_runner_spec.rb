@@ -2,7 +2,7 @@ require "java/emf.jar"
 require "app/workers/instance_runner.rb"
 
 describe InstanceRunner, "#transform" do
-  subject(:runner) { InstanceRunner.new(Instance.new) }
+  subject(:runner) { InstanceRunner.new(instance) }
   
   it "should produce the right number of nodes" do
     runner.transform
@@ -16,8 +16,18 @@ describe InstanceRunner, "#transform" do
     edges.size.should eq(1)
   end
   
-  it "should return the right HUTN" do
-    runner.transform.should eq(expected_output_hutn)
+  it "should update instance's output model" do
+    runner.transform
+    instance.output_model.should eq(expected_output_hutn)
+  end
+  
+  it "should update instance's coverage" do
+    runner.transform
+    instance.coverage.should eq("1")
+  end
+
+  def instance
+    @instance ||= Instance.new
   end
   
   def expected_output_hutn
@@ -42,7 +52,9 @@ package  {
 EOS
   end
   
-  class Instance  
+  class Instance
+    attr_accessor :output_model, :coverage
+    
     def input_model
 <<-EOS
   @Spec {
