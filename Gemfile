@@ -29,8 +29,7 @@ gem 'jquery-rails'
 gem 'resque', '~> 1.24.0', :require => 'resque/server'
 
 # Database connectivity
-gem 'activerecord-jdbcsqlite3-adapter', '~> 1.3.0.beta1', group: [:development, :test]
-gem 'activerecord-jdbcpostgresql-adapter', '~> 1.3.0.beta1', group: [:production]
+gem 'activerecord-jdbcpostgresql-adapter', '~> 1.3.0.beta1'
 
 
 group :test do
