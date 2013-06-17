@@ -9,11 +9,15 @@ class TranslatesGousToHutn
   end
   
 private 
+
   def symbols_with_identifiers_and_references
     @symbols_and_variables.
       map { |sv| [make_identifiable(sv[0]), sv[1]] }.
       map { |sv| make_reference(sv[0], sv[1]) }
   end
+  
+  # First pass -- replace identifier placeholders (e.g. Area%)
+  # with type-unique identifier (e.g. Area42)
   
   def make_identifiable(symbol)
     if symbol.end_with?("%")
@@ -31,6 +35,12 @@ private
     id
   end
   
+  # Second pass -- now that we know how many identifiable objects 
+  # exist for each type, replace reference placeholders (e.g. [Area%])
+  # with a valid name of an object with the right type (e.g., Area42)
+  # Note that the symbol contains an index into a partition in the range
+  # [0..65534] and that the variable denotes the type of object to which
+  # this integer should refer.
   
   def make_reference(symbol, variable)
     if variable and variable.start_with?("[") and variable.end_with?("%]")
@@ -43,7 +53,11 @@ private
   
   def convert_to_reference(n, type)
     largest_id_for_type = @identifiers[type]
+    normalize_for_set_of_bins(n, largest_id_for_type)
+  end
+  
+  def normalize_for_set_of_bins(n, bin_size)
     largest_possible_value_for_n = 65535
-    ( n.to_f * largest_id_for_type.to_f / largest_possible_value_for_n.to_f ).floor
+    ( n.to_f * bin_size.to_f / largest_possible_value_for_n.to_f ).floor
   end
 end
