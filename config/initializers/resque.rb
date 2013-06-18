@@ -19,6 +19,6 @@ end
 #   end
 # end
 # 
-# puts "Rails logger is: " + Rails.logger.inspect
-# puts "ActiveSupport::LogSubscriber.logger is: " + ActiveSupport::LogSubscriber.logger.inspect
-# puts "ActiveRecord::Base.logger is: " + ActiveRecord::Base.logger.inspect
+puts "Rails logger is: " + Rails.logger.inspect
+puts "ActiveSupport::LogSubscriber.logger is: " + ActiveSupport::LogSubscriber.logger.inspect
+puts "ActiveRecord::Base.logger is: " + ActiveRecord::Base.logger.inspect
