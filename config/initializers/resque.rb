@@ -3,21 +3,13 @@ if ENV["REDISTOGO_URL"]
   Resque.redis = Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
 end
 
-# module ActiveRecord
-#   class LogSubscriber
-#     alias old_logger logger
-#     def logger
-#       l = old_logger
-#       puts("Calling logger and returning: " + l.inspect) unless louis_debug_flag
-#       @louis_debug_flag = true
-#       l
-#     end
-#     
-#     def louis_debug_flag
-#       @louis_debug_flag ||= false
-#     end
-#   end
-# end
+# The following code seems to prevent a strange error that seems to occur with
+# when running the InstanceRunner Resque worker on Heroku: instance.save fails
+# with an exception that seems to be cause by ActiveSupport::LogSubscriber attempting
+# to access a logger which is unavailable (nil is returned). I suspect that this is
+# because, for some reason, ActiveRecord::Base.logger is returning nil. Perhaps
+# forcing Rails to access (and hence initialise?) ActiveRecord::Base.logger during the
+# startup of the thread that will run the workers prevents a race condition?
 # 
 puts "Rails logger is: " + Rails.logger.inspect
 puts "ActiveSupport::LogSubscriber.logger is: " + ActiveSupport::LogSubscriber.logger.inspect
