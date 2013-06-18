@@ -3,7 +3,7 @@ require "app/workers/epsilon/calculates_coverage.rb"
 describe CalculatesCoverage, "#run" do
   it "serialises to HUTN" do
     coverage = CalculatesCoverage.new(etl_module).run
-    coverage.should eq("1 0")
+    coverage.should eq([1, 0])
   end
   
   def etl_module

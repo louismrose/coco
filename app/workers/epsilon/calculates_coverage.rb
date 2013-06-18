@@ -22,10 +22,9 @@ class CalculatesCoverage
       coverage[trace_element.rule.name] = true
     end
     
-    # Convert coverage hash to space-separated bitstring
+    # Convert coverage hash to array of 1s and 0s
     coverage.
       values.
-      map { |covered| covered ? 1 : 0 }.
-      join(' ')
+      map { |covered| covered ? 1 : 0 }
   end
 end
