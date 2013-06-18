@@ -8,10 +8,14 @@
 
 transformation_seeds = Dir.glob(File.join(File.dirname(__FILE__), "transformation_seeds", "**", "*.*"))
 
-transformation_seeds.each_slice(3) do |transformation_seed|
-  Transformation.create(
-    code: File.read(transformation_seed[0]),
-    source_metamodel: File.read(transformation_seed[1]),
-    target_metamodel: File.read(transformation_seed[2])
-  )
+transformation_seeds.each_slice(4) do |transformation_seed|
+  params = {
+    code: File.read(transformation_seed[1]),
+    source_metamodel: File.read(transformation_seed[2]),
+    target_metamodel: File.read(transformation_seed[3])
+  }
+  
+  extra_params = JSON.parse(File.read(transformation_seed[0]), symbolize_names: true)
+  
+  Transformation.create(params.merge(extra_params))
 end

@@ -91,6 +91,10 @@ EOS
   EOS
       end
 
+      def source_model_name
+        "Tree"
+      end
+
       def source_metamodel
   <<-EOS
   @namespace(uri="Tree", prefix="Tree")
@@ -102,6 +106,10 @@ EOS
      attr String label;
   }
   EOS
+      end
+      
+      def target_model_name
+        "Graph"
       end
 
       def target_metamodel

@@ -31,11 +31,11 @@ class InstanceRunner
   end
   
   def input_model
-    @input_model ||= LoadsModelFromHutn.new("Tree", @instance.input_model).run
+    @input_model ||= LoadsModelFromHutn.new(@instance.transformation.source_model_name, @instance.input_model).run
   end
   
   def output_model
-    @output_model ||= CreatesEmptyModel.new("Graph", @target_metamodel).run
+    @output_model ||= CreatesEmptyModel.new(@instance.transformation.target_model_name, @target_metamodel).run
   end
   
   def run_transformation
