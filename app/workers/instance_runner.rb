@@ -10,13 +10,13 @@ class InstanceRunner
   
   def self.perform(instance_id)
     puts "Rails logger is: " + Rails.logger.inspect
-    puts "Logger is: " + ActiveSupport::LogSubscriber.logger
+    puts "Logger is: " + ActiveSupport::LogSubscriber.logger.inspect
      
     instance = Instance.find(instance_id)
     InstanceRunner.new(instance).transform
     
     puts "Rails logger is: " + Rails.logger.inspect
-    puts "Logger is: " + ActiveSupport::LogSubscriber.logger
+    puts "Logger is: " + ActiveSupport::LogSubscriber.logger.inspect
     
     instance.save
   end
