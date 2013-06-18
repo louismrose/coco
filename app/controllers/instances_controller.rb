@@ -1,3 +1,5 @@
+require_relative "../workers/epsilon/drivers/gous_driver"
+
 class InstancesController < ApplicationController
   respond_to :html, :json
   
@@ -10,6 +12,13 @@ class InstancesController < ApplicationController
 
   def create
     @instance = @transformation.instances.create(instance_params)
+    Resque.enqueue(InstanceRunner, @instance.id) if @instance.save
+    respond_with(@transformation, @instance)
+  end
+  
+  def create_for_gous
+    hutn = TranslatesGousToHutn.new(gous_params[:symbols], gous_params[:variables]).run
+    @instance = @transformation.instances.create(input_model: hutn)
     Resque.enqueue(InstanceRunner, @instance.id) if @instance.save
     respond_with(@transformation, @instance)
   end
@@ -26,5 +35,9 @@ private
 
   def instance_params
     params.require(:instance).permit(:input_model)
+  end
+  
+  def gous_params
+    params.permit!
   end
 end
