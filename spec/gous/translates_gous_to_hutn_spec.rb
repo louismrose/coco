@@ -1,4 +1,4 @@
-require "app/workers/gous/translates_gous_to_hutn.rb"
+require "lib/gous/translates_gous_to_hutn.rb"
 
 describe TranslatesGousToHutn, "#run" do
 

@@ -1,5 +1,3 @@
-require_relative "../workers/epsilon/drivers/gous_driver"
-
 class InstancesController < ApplicationController
   respond_to :html, :json
   
