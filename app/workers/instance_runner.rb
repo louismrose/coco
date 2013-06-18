@@ -9,6 +9,8 @@ class InstanceRunner
   @queue = :instances
   
   def self.perform(instance_id)
+    puts "Rails logger is: " + Rails.logger.inspect
+    
     instance = Instance.find(instance_id)
     InstanceRunner.new(instance).transform
     instance.save
