@@ -23,7 +23,7 @@ describe InstanceRunner, "#transform" do
   
   it "should update instance's coverage" do
     runner.transform
-    instance.coverage.should eq([1])
+    instance.coverage.should eq("1")
   end
 
   def instance

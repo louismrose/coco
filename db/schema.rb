@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20130618150135) do
     t.datetime "updated_at"
     t.text     "output_model"
     t.integer  "transformation_id"
-    t.json     "coverage"
+    t.string   "coverage"
   end
 
   create_table "transformations", force: true do |t|

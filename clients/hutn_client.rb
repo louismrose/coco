@@ -25,7 +25,7 @@ class Evaluator
       results = HTTParty.get(coverage_url)
     end
 
-    puts results["coverage"].to_s  # [0,1,0,...]
+    puts results["coverage"].split(" ").map(&:to_i).to_s  # [0,1,0,...]
   end
 end
 

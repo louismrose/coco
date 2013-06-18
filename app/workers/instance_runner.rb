@@ -23,7 +23,7 @@ class InstanceRunner
   def transform
     run_transformation
     @instance.output_model = serialise(output_model)
-    @instance.coverage = calculate_coverage
+    @instance.coverage = calculate_coverage.join(' ')
   end
   
   def register_metamodel(metamodel)  

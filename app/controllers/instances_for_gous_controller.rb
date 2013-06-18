@@ -18,9 +18,11 @@ class InstancesForGousController < ApplicationController
   def show
     @instance = Instance.find(params[:id])
 
+    coverage = if @instance.coverage then @instance.coverage.split(" ").map(&:to_i) else nil end
+
     render json: {  
       id: @instance.id,
-      coverage: @instance.coverage,
+      coverage: coverage,
       output_model: @instance.output_model
     }
   end
