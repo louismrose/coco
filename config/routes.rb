@@ -3,7 +3,8 @@ CocoTransform::Application.routes.draw do
     resources :instances, only: [:new, :create, :show]
   end
   
-  post 'transformations/:transformation_id/instances.gous' => 'instances#create_for_gous'
+  post 'transformations/:transformation_id/instances.gous' => 'instances_for_gous#create'
+  get 'transformations/:transformation_id/instances/:id.gous' => 'instances_for_gous#show', as: :transformation_instance_for_gous
   
   mount Resque::Server, :at => "/resque"
   
