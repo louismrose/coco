@@ -9,6 +9,7 @@ class CalculatesCoverageFromUserVariables
   
   def run
     coverage_hash = value_of_variable(variable_name, {})
+    puts coverage_hash
     coverage_hash.values
   end
 

@@ -18,6 +18,8 @@ class CalculatesRuleCoverage
       coverage[trace_element.rule.name] = true
     end
     
+    puts coverage
+    
     # Convert coverage hash to array of 1s and 0s
     coverage.
       values.
