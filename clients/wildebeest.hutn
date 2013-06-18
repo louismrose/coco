@@ -1,0 +1,52 @@
+@Spec {
+  metamodel "wildebeest" {
+    nsUri: "wildebeest"
+  }
+}
+
+wildebeest {
+  World {
+    size: Size { width: 200 length: 100 }
+    area: Area "friendly" { 
+                 name: "friendly"
+                 br: Coordinate { x: 200 y: 0 }
+                 tl: Coordinate { x: 0 y: 50 }
+               },  
+          Area { 
+                 name: "sleepy"
+                 br: Coordinate { x: 100 y: 50 }
+                 tl: Coordinate { x: 0 y: 100 }
+               },
+          Area { 
+                 name: "dancy"
+                 br: Coordinate { x: 200 y: 50 }
+                 tl: Coordinate { x: 100 y: 100 }
+               },
+          Area { 
+                 name: "angry"
+                 br: Coordinate { x: 200 y: 50 }
+                 tl: Coordinate { x: 0 y: 100 }
+               }
+    rules: Rule {
+                  event: AreaEvent {
+                    areaName: Area "friendly"
+                    type: Enter
+                  }
+                  behavior: StaticBehaviour {
+                    initial: Sweep { angle: 180 }
+                    next: StaticBehaviour {
+                      initial: Pause { time: 10 }
+                      next: DynamicBehaviour { action: "walk" }
+                    }
+                  }
+                },
+            Rule {
+                  event: AreaEvent {
+                    areaName: Area "friendly"
+                    type: Exit
+                  }
+                  behavior: FinalBehaviour { action: "end" }
+                }
+                     
+  }
+}

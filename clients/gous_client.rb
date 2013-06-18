@@ -8,10 +8,10 @@ class Evaluator
   def run(symbols, variables)
 
     # Exercise the SUT
-    new_instance = HTTParty.post(@url, :body => { symbols: symbols, variables: variables } )
+    new_instance = HTTParty.post(@url, body: { symbols: symbols, variables: variables } )
     coverage_url = new_instance["coverage_url"]
     puts "Instantiated SUT, creating instance \##{new_instance["id"]}."
-    puts "Polling for results at: #{coverage_url}."
+    puts "Polling for results at: #{coverage_url}"
 
 
     # Wait for coverage results
