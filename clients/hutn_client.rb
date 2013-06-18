@@ -9,8 +9,7 @@ class Evaluator
 
     # Exercise the SUT
     new_instance = HTTParty.post(@url, body: { instance: { input_model: hutn } } )
-    puts new_instance.body
-    
+  
     id = new_instance["id"]
     coverage_url = @url.chomp(".json") + "/#{id}.json"
     
