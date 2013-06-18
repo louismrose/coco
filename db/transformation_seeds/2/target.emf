@@ -1,0 +1,103 @@
+@namespace(uri="octopus", prefix="octopus")
+package octopus;
+
+class Robot {
+  val World[1] world;
+  val Behaviour[1] behaviour;
+}
+
+class World {
+  val Rectangle[1] dimensions;
+  val Zone[*] zone;
+}
+
+class Zone {
+  attr String[1] name;
+  val Rectangle[1] dimensions;
+}
+
+class Rectangle {
+  val Point[1] topLeft;
+  val Point[1] bottomRight;
+}
+
+class Point {
+  attr int[1] x;
+  attr int[1] y;
+}
+
+class Behaviour {
+  val Trigger[+] triggers;
+}
+
+abstract class Trigger {
+  val Action[+] actions;
+}
+
+abstract class Action {
+}
+
+class DetectColour extends Trigger {
+  val Colour[1] colour;
+}
+
+class DetectZoneEntry extends Trigger {
+  ref Zone[1] zone;
+}
+
+class DetectZoneExit extends Trigger {
+  ref Zone[1] zone;
+}
+
+class DetectProximity extends Trigger {
+  val Distance[1] threshold;
+}
+
+class DetectButtonPress extends Trigger {
+}
+
+class Display extends Action {
+  val Displayable[1] message;
+}
+
+class PlaySound extends Action {
+  val Sound[1] sound;
+}
+
+class MoveArms extends Action {
+  val Duration[1] duration;
+}
+
+class MoveLegs extends Action {
+  val Speed[1] speed;
+  val Direction[1] direction;
+}
+
+abstract class Colour {
+}
+
+abstract class Distance {
+}
+
+abstract class Direction {
+}
+
+abstract class Speed {
+}
+
+abstract class Duration {
+}
+
+abstract class Sound {
+}
+
+abstract class Displayable {
+}
+
+class Red extends Colour {
+}
+
+class Text extends Displayable {
+  attr String[1] message;
+}
+

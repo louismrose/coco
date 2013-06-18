@@ -6,4 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Transformation.create
+transformation_seeds = Dir.glob(File.join(File.dirname(__FILE__), "transformation_seeds", "**", "*.*"))
+
+transformation_seeds.each_slice(3) do |transformation_seed|
+  Transformation.create(
+    code: File.read(transformation_seed[0]),
+    source_metamodel: File.read(transformation_seed[1]),
+    target_metamodel: File.read(transformation_seed[2])
+  )
+end

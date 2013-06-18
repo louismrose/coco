@@ -1,0 +1,76 @@
+@namespace(uri="wildebeest", prefix="wildebeest")
+package wildebeest;
+
+class World {
+  val Size[1] size;
+  val Area[*] area;
+  val Rule[*] rules;
+}
+
+class Size {
+  attr int length;
+  attr int width;
+}
+
+class Rule {
+  val Event event;
+  val Behaviour behavior;
+}
+
+class Behaviour {
+}
+
+class StaticBehaviour extends Behaviour {
+  val Action initial;
+  val Behaviour next;
+}
+
+abstract class Action {}
+
+class Sweep extends Action {
+  attr int angle;
+}
+
+class Pause extends Action {
+  attr int time;
+}
+
+class DynamicBehaviour extends Behaviour {
+  !unique attr String[*] action;
+}
+
+class FinalBehaviour extends Behaviour {
+  !unique attr String[*] action;
+}
+
+class Area {
+  attr String name;
+  val Coordinate[1] tl;
+  val Coordinate[1] br;
+}
+
+class Coordinate {
+  attr int x;
+  attr int y;
+}
+
+class AreaEvent extends Event {
+  attr AreaEventType[1] type;
+  ref Area[1] areaName;
+}
+
+enum SimpleEvent {
+  Start = 0;
+  Distance = 1;
+  Touch = 2;
+}
+
+enum AreaEventType {
+  Enter = 0;
+  Exit = 1;
+}
+
+class Event {
+  attr SimpleEvent event;
+}
+

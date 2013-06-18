@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130618092713) do
+ActiveRecord::Schema.define(version: 20130618134130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 20130618092713) do
   create_table "transformations", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "code"
+    t.text     "source_metamodel"
+    t.text     "target_metamodel"
   end
 
 end
