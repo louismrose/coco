@@ -1,4 +1,6 @@
 pre {
+  var expectedCoveragePercentage = 75;
+
 	var robot = new Octopus!Robot;
 	robot.behaviour = new Octopus!Behaviour;
 	
