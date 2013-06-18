@@ -1,8 +1,8 @@
-require "app/workers/epsilon/calculates_coverage.rb"
+require "app/workers/epsilon/calculates_rule_coverage.rb"
 
-describe CalculatesCoverage, "#run" do
-  it "serialises to HUTN" do
-    coverage = CalculatesCoverage.new(etl_module).run
+describe CalculatesRuleCoverage, "#run" do
+  it "calculates accurate rule coverage" do
+    coverage = CalculatesRuleCoverage.new(etl_module).run
     coverage.should eq([1, 0])
   end
   

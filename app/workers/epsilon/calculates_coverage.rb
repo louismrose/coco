@@ -1,30 +1,24 @@
-require "java/epsilon.jar"
+require_relative "calculates_rule_coverage"
+require_relative "calculates_coverage_from_user_variables"
 
 class CalculatesCoverage
+  attr_reader :etl_module
+  
   def initialize(etl_module)
     @etl_module = etl_module
   end
   
   def run
-    calculate_rule_coverage
+    delegates.map(&:run).flatten
   end
-  
-  def calculate_rule_coverage
-    coverage = {}
-    
-    # Unset rule coverage for all rules declared in the transformation
-    @etl_module.declared_transform_rules.each do |rule|
-      coverage[rule.name] = false
-    end
-    
-    # Set rule coverage each time a rule is referenced in the transformation_trace
-    @etl_module.context.transformation_trace.transformations.each do |trace_element|
-      coverage[trace_element.rule.name] = true
-    end
-    
-    # Convert coverage hash to array of 1s and 0s
-    coverage.
-      values.
-      map { |covered| covered ? 1 : 0 }
+
+private
+  def delegates
+    [
+      CalculatesRuleCoverage.new(etl_module),
+      CalculatesCoverageFromUserVariables.new(etl_module, 'branch_coverage'),
+      CalculatesCoverageFromUserVariables.new(etl_module, 'condition_coverage'),
+      CalculatesCoverageFromUserVariables.new(etl_module, 'proportion_coverage')
+    ]
   end
 end
