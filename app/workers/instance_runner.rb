@@ -10,8 +10,7 @@ class InstanceRunner
   
   def self.perform(instance_id)
     instance = Instance.find(instance_id)
-    InstanceRunner.new(instance).transform
-    
+    InstanceRunner.new(instance).transform  
     instance.save
   end
   
@@ -22,9 +21,13 @@ class InstanceRunner
   end
   
   def transform
-    run_transformation
-    @instance.output_model = serialise(output_model)
-    @instance.coverage = calculate_coverage.join(' ')
+    begin
+      run_transformation
+      @instance.output_model = serialise(output_model)
+      @instance.coverage = calculate_coverage.join(' ')
+    rescue java.lang.Throwable => e
+      @instance.error = "#{e.class} : #{e.message} caused by: #{e.backtrace.join('\n')}"
+    end
   end
   
   def register_metamodel(metamodel)  

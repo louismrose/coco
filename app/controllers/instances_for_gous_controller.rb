@@ -23,7 +23,7 @@ class InstancesForGousController < ApplicationController
     render json: {  
       id: @instance.id,
       coverage: coverage,
-      error: nil,
+      error: @instance.error,
       output_model: @instance.output_model
     }
   end
