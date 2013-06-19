@@ -16,13 +16,17 @@ class Evaluator
 
     # Wait for coverage results
     results = HTTParty.get(coverage_url)
-    until results["coverage"] do
+    until results["coverage"] or results["error"] do
       puts "Coverage not yet ready, waiting for 1 second before retrying"
       sleep 1
       results = HTTParty.get(coverage_url)
     end
-
-    puts results["coverage"].to_s  # [0,1,0,...]
+    
+    if results["coverage"]
+      puts results["coverage"].to_s  # [0,1,0,...]
+    else
+      puts "An error was encountered: " + results["error"]
+    end
   end
 end
 
