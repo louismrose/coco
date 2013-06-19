@@ -8,7 +8,11 @@ class TranslatesGousToHutn
     symbols_with_identifiers_and_references.join(' ')
   end
   
-private 
+private
+
+  def quote(s)
+    '"' + s + '"'
+  end
 
   def symbols_with_identifiers_and_references
     @symbols_and_variables.
@@ -22,7 +26,7 @@ private
   def make_identifiable(symbol)
     if symbol.end_with?("%")
       type = symbol.chomp("%")
-      type + new_identifier_for(type).to_s
+      quote(type + new_identifier_for(type).to_s)
     else
       symbol
     end
@@ -45,7 +49,7 @@ private
   def make_reference(symbol, variable)
     if variable and variable.start_with?("[") and variable.end_with?("%]")
       type = variable[1, variable.length - 3]
-      type + convert_to_reference(symbol, type).to_s
+      quote(type + convert_to_reference(symbol, type).to_s)
     else
       symbol
     end

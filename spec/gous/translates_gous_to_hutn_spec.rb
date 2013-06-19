@@ -15,7 +15,7 @@ describe TranslatesGousToHutn, "#run" do
     variables = []
     
     translated = translate(symbols, variables)
-    translated.should eq(%w(identifiable: Area0 Area1 Event0 Area2 Event1).join(' '))
+    translated.should eq(%w(identifiable: "Area0" "Area1" "Event0" "Area2" "Event1").join(' '))
   end
   
   it "replaces a reference with a valid identifiers according to partitioning" do
@@ -23,7 +23,7 @@ describe TranslatesGousToHutn, "#run" do
     variables = %w(Dummy [Area%] [Area%] [Event%] Dummy Dummy Dummy Dummy)
     
     translated = translate(symbols, variables)
-    translated.should eq(%w(refs: Area0 Area1 Event0 defs: Area0 Area1 Event0).join(' '))
+    translated.should eq(%w(refs: "Area0" "Area1" "Event0" defs: "Area0" "Area1" "Event0").join(' '))
   end
   
 private
