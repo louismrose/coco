@@ -272,7 +272,7 @@
       </production>
     </variable>
     <variable symbol="[Area%]">
-      <interval length="65535"/>
+      <scalarProduction start="0" end="65535"/>
     </variable>
     <variable symbol="[AreaEventType]">
       <production>
@@ -283,7 +283,7 @@
       </production>
     </variable>
     <variable symbol="[EInt]">
-      <interval length="65535"/>
+      <scalarProduction start="0" end="65535"/>
     </variable>
     <variable symbol="[EString]">
       <production>
