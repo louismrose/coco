@@ -29,4 +29,4 @@ end
 symbols = ["@Spec", "{", "MetaModel", "\"Tree\"", "{", "nsUri", "=", "\"Tree\"", "}", "}", "Trees", "{", "Tree", "{", "children:", "Tree", "{", "label:", "\"t2\"", "}", "}", "}"]
 variables = ["S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "[Tree]", "[Tree]", "[Tree]", "[Tree]", "[Tree]", "[Tree]", "[Tree]", "[Tree]", "[Tree]", "S"]
 
-Evaluator.new("http://localhost:2000/transformations/1/instances.gous.json").run(symbols, variables)
+Evaluator.new("http://coco.herokuapp.com/transformations/1/instances.gous.json").run(symbols, variables)
