@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<param>
+  <scfg>
+    <variable symbol="S">
+      <production>
+        <symbol symbol="@Spec"/>
+        <symbol symbol="{"/>
+        <symbol symbol="metamodel"/>
+        <symbol symbol="&quot;wildebeest&quot;"/>
+        <symbol symbol="{"/>
+        <symbol symbol="nsUri:"/>
+        <symbol symbol="&quot;wildebeest&quot;"/>
+        <symbol symbol="}"/>
+        <symbol symbol="}"/>
+        <symbol symbol="package"/>
+        <symbol symbol="{"/>
+        <symbol symbol="World"/>
+        <symbol symbol="{"/>
+        <symbol symbol="size:"/>
+        <symbol symbol="Size"/>
+        <symbol symbol="{"/>
+        <symbol symbol="length:"/>
+        <symbol symbol="[Size#length]"/>
+        <symbol symbol="width:"/>
+        <symbol symbol="[Size#width]"/>
+        <symbol symbol="}"/>
+        <symbol symbol="area:"/>
+        <symbol symbol="[Area0..*]"/>
+        <symbol symbol="rules:"/>
+        <symbol symbol="[Rule0..*]"/>
+        <symbol symbol="}"/>
+        <symbol symbol="}"/>
+      </production>
+    </variable>
+    <variable symbol="[Rule]">
+      <production>
+        <symbol symbol="Rule"/>
+        <symbol symbol="{"/>
+        <symbol symbol="event:"/>
+        <symbol symbol="[Event0..1]"/>
+        <symbol symbol="behavior:"/>
+        <symbol symbol="[Behaviour0..1]"/>
+        <symbol symbol="}"/>
+      </production>
+    </variable>
+    <variable symbol="[Behaviour]">
+      <production>
+        <symbol symbol="Behaviour"/>
+        <symbol symbol="{"/>
+        <symbol symbol="}"/>
+      </production>
+      <production>
+        <symbol symbol="StaticBehaviour"/>
+        <symbol symbol="{"/>
+        <symbol symbol="initial:"/>
+        <symbol symbol="[Action0..1]"/>
+        <symbol symbol="next:"/>
+        <symbol symbol="[Behaviour0..1]"/>
+        <symbol symbol="}"/>
+      </production>
+      <production>
+        <symbol symbol="DynamicBehaviour"/>
+        <symbol symbol="{"/>
+        <symbol symbol="action:"/>
+        <symbol symbol="[EString0..*]"/>
+        <symbol symbol="}"/>
+      </production>
+      <production>
+        <symbol symbol="FinalBehaviour"/>
+        <symbol symbol="{"/>
+        <symbol symbol="action:"/>
+        <symbol symbol="[EString0..*]"/>
+        <symbol symbol="}"/>
+      </production>
+    </variable>
+    <variable symbol="[Action]">
+      <production>
+        <symbol symbol="Sweep"/>
+        <symbol symbol="{"/>
+        <symbol symbol="angle:"/>
+        <symbol symbol="[EInt0..1]"/>
+        <symbol symbol="}"/>
+      </production>
+      <production>
+        <symbol symbol="Pause"/>
+        <symbol symbol="{"/>
+        <symbol symbol="time:"/>
+        <symbol symbol="[EInt0..1]"/>
+        <symbol symbol="}"/>
+      </production>
+    </variable>
+    <variable symbol="[Area]">
+      <production>
+        <symbol symbol="Area"/>
+        <symbol symbol="Area%"/>
+        <symbol symbol="{"/>
+        <symbol symbol="name:"/>
+        <symbol symbol="[EString0..1]"/>
+        <symbol symbol="tl:"/>
+        <symbol symbol="[Area#tl]"/>
+        <symbol symbol="br:"/>
+        <symbol symbol="[Area#br]"/>
+        <symbol symbol="}"/>
+      </production>
+    </variable>
+    <variable symbol="[Coordinate]">
+      <production>
+        <symbol symbol="Coordinate"/>
+        <symbol symbol="{"/>
+        <symbol symbol="x:"/>
+        <symbol symbol="[Coordinate#x]"/>
+        <symbol symbol="y:"/>
+        <symbol symbol="[Coordinate#y]"/>
+        <symbol symbol="}"/>
+      </production>
+    </variable>
+    <variable symbol="[Event]">
+      <production>
+        <symbol symbol="Event"/>
+        <symbol symbol="{"/>
+        <symbol symbol="[EventFeatures]"/>
+        <symbol symbol="}"/>
+      </production>
+      <production>
+        <symbol symbol="AreaEvent"/>
+        <symbol symbol="{"/>
+        <symbol symbol="[EventFeatures]"/>
+        <symbol symbol="type:"/>
+        <symbol symbol="[AreaEventType]"/>
+        <symbol symbol="areaName:"/>
+        <symbol symbol="Area"/>
+        <symbol symbol="[Area%]"/>
+        <symbol symbol="}"/>
+      </production>
+    </variable>
+    <variable symbol="[EventFeatures]">
+      <production>
+        <symbol symbol="event:"/>
+        <symbol symbol="[SimpleEvent0..1]"/>
+      </production>
+    </variable>
+    <variable symbol="[Size#length]">
+      <production>
+        <symbol symbol="[EInt0..1]"/>
+      </production>
+    </variable>
+    <variable symbol="[Size#width]">
+      <production>
+        <symbol symbol="[EInt0..1]"/>
+      </production>
+    </variable>
+    <variable symbol="[Area#tl]">
+      <production>
+        <symbol symbol="[Coordinate]"/>
+      </production>
+    </variable>
+    <variable symbol="[Area#br]">
+      <production>
+        <symbol symbol="[Coordinate]"/>
+      </production>
+    </variable>
+    <variable symbol="[Coordinate#x]">
+      <production>
+        <symbol symbol="[EInt0..1]"/>
+      </production>
+    </variable>
+    <variable symbol="[Coordinate#y]">
+      <production>
+        <symbol symbol="[EInt0..1]"/>
+      </production>
+    </variable>
+    <variable symbol="[EInt0..1]">
+      <production>
+        <symbol symbol="null"/>
+      </production>
+      <production>
+        <symbol symbol="[EInt]"/>
+      </production>
+    </variable>
+    <variable symbol="[Event0..1]">
+      <production>
+        <symbol symbol="null"/>
+      </production>
+      <production>
+        <symbol symbol="[Event]"/>
+      </production>
+    </variable>
+    <variable symbol="[Behaviour0..1]">
+      <production>
+        <symbol symbol="null"/>
+      </production>
+      <production>
+        <symbol symbol="[Behaviour]"/>
+      </production>
+    </variable>
+    <variable symbol="[Action0..1]">
+      <production>
+        <symbol symbol="null"/>
+      </production>
+      <production>
+        <symbol symbol="[Action]"/>
+      </production>
+    </variable>
+    <variable symbol="[EString0..1]">
+      <production>
+        <symbol symbol="null"/>
+      </production>
+      <production>
+        <symbol symbol="[EString]"/>
+      </production>
+    </variable>
+    <variable symbol="[SimpleEvent0..1]">
+      <production>
+        <symbol symbol="null"/>
+      </production>
+      <production>
+        <symbol symbol="[SimpleEvent]"/>
+      </production>
+    </variable>
+    <variable symbol="[Area0..*]">
+      <production>
+        <symbol symbol="null"/>
+      </production>
+      <production>
+        <symbol symbol="[Area1..*]"/>
+      </production>
+    </variable>
+    <variable symbol="[Area1..*]">
+      <production>
+        <symbol symbol="[Area]"/>
+      </production>
+      <production>
+        <symbol symbol="[Area]"/>
+        <symbol symbol=","/>
+        <symbol symbol="[Area1..*]"/>
+      </production>
+    </variable>
+    <variable symbol="[Rule0..*]">
+      <production>
+        <symbol symbol="null"/>
+      </production>
+      <production>
+        <symbol symbol="[Rule1..*]"/>
+      </production>
+    </variable>
+    <variable symbol="[Rule1..*]">
+      <production>
+        <symbol symbol="[Rule]"/>
+      </production>
+      <production>
+        <symbol symbol="[Rule]"/>
+        <symbol symbol=","/>
+        <symbol symbol="[Rule1..*]"/>
+      </production>
+    </variable>
+    <variable symbol="[EString0..*]">
+      <production>
+        <symbol symbol="null"/>
+      </production>
+      <production>
+        <symbol symbol="[EString1..*]"/>
+      </production>
+    </variable>
+    <variable symbol="[EString1..*]">
+      <production>
+        <symbol symbol="[EString]"/>
+      </production>
+      <production>
+        <symbol symbol="[EString]"/>
+        <symbol symbol=","/>
+        <symbol symbol="[EString1..*]"/>
+      </production>
+    </variable>
+    <variable symbol="[Area%]">
+      <interval length="65535"/>
+    </variable>
+    <variable symbol="[AreaEventType]">
+      <production>
+        <symbol symbol="Enter"/>
+      </production>
+      <production>
+        <symbol symbol="Exit"/>
+      </production>
+    </variable>
+    <variable symbol="[EInt]">
+      <interval length="65535"/>
+    </variable>
+    <variable symbol="[EString]">
+      <production>
+        <symbol symbol="&quot;a&quot;"/>
+      </production>
+      <production>
+        <symbol symbol="&quot;Ab&quot;"/>
+      </production>
+      <production>
+        <symbol symbol="&quot;ABC&quot;"/>
+      </production>
+    </variable>
+  </scfg>
+</param>

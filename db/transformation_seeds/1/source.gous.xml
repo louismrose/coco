@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<param>
+	<scfg>
+		<variable symbol="S">
+			<production>
+				<symbol symbol="@Spec"/>
+				<symbol symbol="{"/>
+				<symbol symbol="metamodel"/>
+				<symbol symbol="&quot;Tree&quot;"/>
+				<symbol symbol="{"/>
+				<symbol symbol="nsUri:"/>
+				<symbol symbol="&quot;Tree&quot;"/>
+				<symbol symbol="}"/>
+				<symbol symbol="}"/>
+				<symbol symbol="package"/>
+				<symbol symbol="{"/>
+				<symbol symbol="[Tree]"/>
+				<symbol symbol="}"/>
+			</production>
+		</variable>
+		<variable symbol="[Tree]">
+			<production>
+        <symbol symbol="Tree"/>
+				<symbol symbol="{"/>
+				<symbol symbol="label:"/>
+				<symbol symbol="[EString]"/>
+				<symbol symbol="children:"/>
+				<symbol symbol="[Tree0..*]"/>
+				<symbol symbol="}"/>
+			</production>
+		</variable>
+		<variable symbol="[Tree0..*]">
+			<production>
+				<symbol symbol="null"/>
+			</production>
+			<production>
+				<symbol symbol="[Tree1..*]"/>
+			</production>
+		</variable>
+		<variable symbol="[Tree1..*]">
+			<production>
+				<symbol symbol="[Tree]"/>
+			</production>
+			<production>
+				<symbol symbol="[Tree]"/>
+				<symbol symbol=","/>
+				<symbol symbol="[Tree1..*]"/>
+			</production>
+		</variable>
+		<variable symbol="[EString]">
+			<production>
+				<symbol symbol='"a"'/>
+			</production>
+			<production>
+				<symbol symbol='"Ab"'/>
+			</production>
+			<production>
+				<symbol symbol='"ABC"'/>
+			</production>
+		</variable>
+	</scfg>
+</param>
