@@ -6,7 +6,7 @@ class TransformationsForGousController < ApplicationController
     
     render json: {
       grammar: File.read(File.join(Rails.root, @transformation.grammar_file)),
-      evaluation_url: new_transformation_instance_for_gous_url(@transformation)
+      evaluation_url: new_transformation_instance_for_gous_url(@transformation, format: :json)
     }
   end
 end
