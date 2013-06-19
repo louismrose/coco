@@ -11,6 +11,4 @@ end
 # forcing Rails to access (and hence initialise?) ActiveRecord::Base.logger during the
 # startup of the thread that will run the workers prevents a race condition?
 # 
-puts "Rails logger is: " + Rails.logger.inspect
-puts "ActiveSupport::LogSubscriber.logger is: " + ActiveSupport::LogSubscriber.logger.inspect
 puts "ActiveRecord::Base.logger is: " + ActiveRecord::Base.logger.inspect
