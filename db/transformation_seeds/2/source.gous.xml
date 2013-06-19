@@ -253,6 +253,17 @@
         <symbol symbol="[Rule1..*]"/>
       </production>
     </variable>
+    <variable symbol="<SimpleEvent>">
+      <production>
+        <symbol symbol="Start"/>
+      </production>
+      <production>
+        <symbol symbol="Distance"/>
+      </production>
+      <production>
+        <symbol symbol="Touch"/>
+      </production>
+    </variable>
     <variable symbol="[EString0..*]">
       <production>
         <symbol symbol="null"/>
