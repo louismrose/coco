@@ -253,7 +253,7 @@
         <symbol symbol="[Rule1..*]"/>
       </production>
     </variable>
-    <variable symbol="<SimpleEvent>">
+    <variable symbol="[SimpleEvent]">
       <production>
         <symbol symbol="Start"/>
       </production>
