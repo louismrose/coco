@@ -1,7 +1,8 @@
 class TranslatesGousToHutn
   def initialize(symbols, variables)
-    @symbols_and_variables = symbols.zip(variables)
+    @symbols, @variables = symbols, variables
     @identifiers = {}
+    @invalid_references = []
   end
   
   def run      
@@ -15,9 +16,13 @@ private
   end
 
   def symbols_with_identifiers_and_references
-    @symbols_and_variables.
-      map { |sv| [make_identifiable(sv[0]), sv[1]] }.
-      map { |sv| make_reference(sv[0], sv[1]) }
+    identifiable_symbols = @symbols.map { |s| make_identifiable(s) }
+    
+    referenced_symbols = identifiable_symbols.zip(@variables).map do |sv|
+      make_reference(sv[0], sv[1])
+    end
+    
+    remove_invalid_reference_symbols_from(referenced_symbols)
   end
   
   # First pass -- replace identifier placeholders (e.g. Area%)
@@ -49,7 +54,12 @@ private
   def make_reference(symbol, variable)
     if variable and variable.start_with?("[") and variable.end_with?("%]")
       type = variable[1, variable.length - 3]
-      quote(type + convert_to_reference(symbol, type).to_s)
+      
+      if @identifiers[type]
+        quote(type + convert_to_reference(symbol, type).to_s)
+      else
+        nil
+      end
     else
       symbol
     end
@@ -63,5 +73,32 @@ private
   def normalize_for_set_of_bins(n, bin_size)
     largest_possible_value_for_n = 65535
     ( n.to_f * bin_size.to_f / largest_possible_value_for_n.to_f ).floor
+  end
+  
+  
+  # Third pass -- removes invalid references, which are references to
+  # to types for which there are no instances. The second pass inserts
+  # nils into the symbols array for these invalid references. The third
+  # pass finds occurrences of [..., X, nil, ...] in the symbols array
+  # and replaces them with [..., "null", ...] to convert the invalid
+  # reference into a valid null reference in HUTN. Note that we must
+  # remove X as null references in HUTN are not preceded by a type
+  # declaration. For example:
+  #
+  #   children: Area "Area1"  <-- valid HUTN
+  #   children: null          <-- valid HUTN
+  #   children: Area null     <-- invalid HUTN
+  
+  def remove_invalid_reference_symbols_from(symbols)
+    valid_referenced_symbols = []
+    symbols.each do |s|
+      if s
+        valid_referenced_symbols << s
+      else
+        valid_referenced_symbols.pop
+        valid_referenced_symbols << "null"
+      end
+    end
+    valid_referenced_symbols
   end
 end

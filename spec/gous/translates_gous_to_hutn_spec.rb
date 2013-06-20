@@ -26,6 +26,14 @@ describe TranslatesGousToHutn, "#run" do
     translated.should eq(%w(refs: "Area0" "Area1" "Event0" defs: "Area0" "Area1" "Event0").join(' '))
   end
   
+  it "replaces a reference and its type with null when there are no potential targets" do
+    symbols = %w(Area 0 Area 65534)
+    variables = %w([Event] [Area%] [Event] [Area%])
+    
+    translated = translate(symbols, variables)
+    translated.should eq(%w(null null).join(' '))
+  end
+  
 private
 
   def translate(symbols, variables)
