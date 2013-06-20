@@ -10,7 +10,7 @@ class InstancesForGousController < ApplicationController
     
     render json: {
       id: @instance.id,
-      coverage_url: url_for([@transformation, @instance]) + ".gous.json",input_model: @instance.input_model,
+      coverage_url: url_for([@transformation, @instance]) + ".gous.json",
       input_model: @instance.input_model
     }
   end
