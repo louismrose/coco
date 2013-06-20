@@ -46,6 +46,7 @@
     <variable symbol="[Behaviour]">
       <production>
         <symbol symbol="Behaviour"/>
+        <symbol symbol="Behaviour%"/>
         <symbol symbol="{"/>
         <symbol symbol="}"/>
       </production>
