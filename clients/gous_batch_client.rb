@@ -52,4 +52,4 @@ instances = {
   }
 }
 
-Evaluator.new("http://localhost:2000/transformations/1/instances.batch.gous.json").run(instances)
+Evaluator.new("http://coco.herokuapp.com/transformations/1/instances.batch.gous.json").run(instances)
