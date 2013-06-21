@@ -45,12 +45,6 @@
     </variable>
     <variable symbol="[Behaviour]">
       <production>
-        <symbol symbol="Behaviour"/>
-        <symbol symbol="Behaviour%"/>
-        <symbol symbol="{"/>
-        <symbol symbol="}"/>
-      </production>
-      <production>
         <symbol symbol="StaticBehaviour"/>
         <symbol symbol="{"/>
         <symbol symbol="initial:"/>
