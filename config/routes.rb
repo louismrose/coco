@@ -1,6 +1,7 @@
 CocoTransform::Application.routes.draw do
   resources :transformations, only: [:show] do
     resources :instances, only: [:new, :create, :show]
+    resources :errors, only: [:index]
   end
   
   get 'transformations/:id.gous' => 'transformations_for_gous#show', as: :transformation_for_gous

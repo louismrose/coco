@@ -1,0 +1,12 @@
+<h1>Errors for transformation #<%=@transformation.id%></h1>
+
+<% if @errors %>
+  <p><%=@errors.size%> errors encountered.</p>
+
+  <% @errors.each do |error| %>
+    <pre>Instances: <%= error.instances.map{|i| link_to(i.id, [@transformation, i])}.join(', ').html_safe%><br/><br/><%= error.message[0..1000] %>...</pre>
+  <% end %>
+
+<% else %>
+  Good news everybody: no errors encountered!
+<% end %>

@@ -6,3 +6,12 @@
 <h3>Output Model</h3>
 <textarea class="editor" data-read-only="true" data-mime-type="text/x-hutn"><%=@instance.output_model%></textarea>
 
+<% if @instance.coverage %>
+  <h3>Coverage</h3>
+  <pre><%=@instance.coverage.to_s%></pre>
+<% end %>
+
+<% if @instance.error %>
+  <h3>Error</h3>
+  <pre><%=@instance.error[0..1000]%></pre>
+<% end %>
