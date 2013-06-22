@@ -10,6 +10,6 @@ class ErrorsController < ApplicationController
   
 private
   def set_transformation
-    @transformation = Transformation.find(params[:transformation_id])
+    @transformation = Transformation.find_by_id_or_name(params[:transformation_id])
   end
 end

@@ -3,7 +3,7 @@
 <% if @transformations %>
   <ul>
   <% @transformations.each do |transformation| %>
-    <li><%= link_to "Transformation #{transformation.id}", transformation %></li>
+    <li><%= link_to "#{transformation.name}", transformation %></li>
   <% end %>
   </ul>
 

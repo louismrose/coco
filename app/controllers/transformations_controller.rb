@@ -7,7 +7,7 @@ class TransformationsController < ApplicationController
   end
 
   def show
-    @transformation = Transformation.find(params[:id])
+    @transformation = Transformation.find_by_id_or_name(params[:id])
     respond_with(@transformation)
   end
 end

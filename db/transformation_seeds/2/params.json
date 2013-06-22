@@ -1,4 +1,5 @@
 {
+  "name" : "mindstorms",
   "source_model_name" : "Wildebeest",
   "target_model_name" : "Octopus"
 }

@@ -2,7 +2,7 @@ class TransformationsForGousController < ApplicationController
   respond_to :json
   
   def show
-    @transformation = Transformation.find(params[:id])
+    @transformation = Transformation.find_by_id_or_name(params[:id])
     
     render json: {
       grammar: File.read(File.join(Rails.root, @transformation.grammar_file)),
