@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20130622103430) do
     t.datetime "updated_at"
     t.text     "output_model"
     t.integer  "transformation_id"
-    t.string   "coverage"
+    t.string   "coverage",          default: ""
     t.text     "error"
   end
 
