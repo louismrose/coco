@@ -289,7 +289,7 @@
       </production>
     </variable>
     <variable symbol="[EInt]">
-      <scalarProduction start="0" end="65535"/>
+      <scalarProduction start="-32768" end="32767"/>
     </variable>
     <variable symbol="[EString]">
       <production>
