@@ -34,7 +34,7 @@ class Evaluator
 end
 
 hutn = File.read(File.join(File.dirname(__FILE__), "wildebeest.hutn"))
-Evaluator.new("http://coco.herokuapp.com/transformations/2/instances.json").run(hutn)
+Evaluator.new("http://transformations.herokuapp.com/transformations/2/instances.json").run(hutn)
 
 
 
